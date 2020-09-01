@@ -130,7 +130,7 @@ class PayCCForm(FormAction):
             return {
                 "payment_amount": f"{amount:.2f}",
                 "payment_amount_type": amount_type,
-                "currency": "$",
+                "currency": "BDT",
             }
 
         else:
@@ -548,6 +548,22 @@ class ActionRecipients(Action):
         )
         return []
 
+class ActionCarddb(Action):
+    def name(self):
+        return "action_carddb"
+
+    def run(self, dispatcher, tracker, domain):
+        cardsbalance = tracker.get_slot("credit_card_balance")
+        print(cardsbalance)
+        formatted_cardtypes = "\n" + "\n".join(
+            [f"- {card}" for card in cardsbalance.keys()]
+        )
+        dispatcher.utter_message(
+            template="utter_cardtypes",
+            formatted_cardtypes=formatted_cardtypes,
+        )
+        return []
+
 
 class ActionSessionStart(Action):
     def name(self) -> Text:
@@ -604,3 +620,4 @@ class ActionRestart(Action):
     ) -> List[EventType]:
 
         return [Restarted(), FollowupAction("action_session_start")]
+

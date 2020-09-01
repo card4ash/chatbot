@@ -15,10 +15,34 @@
 * check_balance
     - action_account_balance
 
+## pay credit card and check account balance with card type check
+* pay_cc
+    - cc_payment_form
+    - form{"name": "cc_payment_form"}
+* check_carddb
+    - action_carddb
+    - cc_payment_form
+    - form{"name": "cc_payment_form"}
+    - form{"name": null}
+
 ## pay credit card and check account balance inside form
 * pay_cc
     - cc_payment_form
     - form{"name": "cc_payment_form"}
+* check_balance
+    - action_account_balance
+    - utter_ask_continue
+* affirm
+    - cc_payment_form
+    - form{"name": null}
+
+## pay credit card and check account balance inside form with cardtype check
+* pay_cc
+    - cc_payment_form
+    - form{"name": "cc_payment_form"}
+* check_carddb
+    - action_carddb
+    - cc_payment_form
 * check_balance
     - action_account_balance
     - utter_ask_continue
@@ -34,6 +58,17 @@
 * thankyou
     - utter_noworries
 
+## pay cc happy path no greet with cardtype check
+* pay_cc
+    - cc_payment_form
+    - form{"name": "cc_payment_form"}
+* check_carddb
+    - action_carddb
+    - cc_payment_form
+    - form{"name": null}
+* thankyou
+    - utter_noworries
+
 ## pay credit card happy path
 * greet
     - utter_greet
@@ -43,10 +78,31 @@
     - form{"name": "cc_payment_form"}
     - form{"name": null}
 
+## pay credit card happy path
+* greet
+    - utter_greet
+    - utter_help
+* pay_cc
+    - cc_payment_form
+    - form{"name": "cc_payment_form"}
+* check_carddb
+    - action_carddb
+    - cc_payment_form
+    - form{"name": null}
+
 ## pay credit card no greet or thanks
 * pay_cc
     - cc_payment_form
     - form{"name": "cc_payment_form"}
+    - form{"name": null}
+
+## pay credit card no greet or thanks
+* pay_cc
+    - cc_payment_form
+    - form{"name": "cc_payment_form"}
+* check_carddb
+    - action_carddb
+    - cc_payment_form
     - form{"name": null}
 
 ## transfer money

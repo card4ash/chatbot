@@ -22,6 +22,7 @@ intents:
 - check_earnings:
     use_entities: []
 - check_recipients
+- check_carddb
 - session_start
 - restart
 - trigger_handoff
@@ -186,6 +187,8 @@ responses:
   - text: The current balance for your {credit_card} account is {currency}{amount_of_money}.
   utter_recipients:
   - text: These are your known recpients to whom you can send money:{formatted_recipients}
+  utter_cardtypes:
+  - text: These are your known card types for which you can pay bill:{formatted_cardtypes}
   utter_greet:
   - text: Hi! I'm your Financial Assistant!
   utter_ask_handoff:
@@ -211,6 +214,7 @@ actions:
 - action_restart
 - action_credit_card_balance
 - action_recipients
+- action_carddb
 - action_handoff
 - action_handoff_options
 forms:
